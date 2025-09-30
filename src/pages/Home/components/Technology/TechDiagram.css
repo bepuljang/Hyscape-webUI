@@ -1,0 +1,292 @@
+:root {
+  --anglePos : 35deg;
+  --angleNeg : -35deg;
+  --diagramDist:90px;
+}
+
+.tech-diagram {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  height: 460px;
+  max-width: 100%;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Pretendard Variable', -apple-system, system-ui, sans-serif;
+  margin: 0 auto;
+}
+
+/* Center Hub */
+.tech-center {
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0a1628;
+  border-radius: 50%;
+  z-index: 10;
+}
+
+.tech-center-content {
+  text-align: center;
+  color: #ffffff;
+}
+
+.tech-center-content h3 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.tech-center-content span {
+  font-size: 18px;
+  font-weight: 400;
+  opacity: 0.9;
+}
+
+.tech-center-glow {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  animation: pulse 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Connection Lines */
+.tech-connections {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.tech-connection {
+  position: absolute;
+  background: linear-gradient(90deg, #00D4FF 0%, transparent 100%);
+  opacity: 0.4;
+  transform-origin: center;
+}
+
+.tech-connection::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  opacity: 0.5;
+}
+
+/* Hexagon connection lines - 60 degree angles */
+.tech-connection-top {
+  width: 2px;
+  height: 160px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -160px);
+  background: linear-gradient(180deg, #00D4FF 0%, transparent 100%);
+}
+
+.tech-connection-top-right {
+  width: 160px;
+  height: 2px;
+  left: 50%;
+  top: 50%;
+  transform-origin: left center;
+  transform: rotate(var(--anglePos));
+}
+
+.tech-connection-bottom-right {
+  width: 160px;
+  height: 2px;
+  left: 50%;
+  top: 50%;
+  transform-origin: left center;
+  transform: rotate(var(--angleNeg));
+}
+
+.tech-connection-bottom {
+  width: 2px;
+  height: 160px;
+  left: 50%;
+  bottom: 50%;
+  transform: translate(-50%, 160px);
+  background: linear-gradient(0deg, #00D4FF 0%, transparent 100%);
+}
+
+.tech-connection-bottom-left {
+  width: 160px;
+  height: 2px;
+  right: 50%;
+  top: 50%;
+  transform-origin: right center;
+  transform: rotate(var(--anglePos));
+  background: linear-gradient(270deg, #00D4FF 0%, transparent 100%);
+}
+
+.tech-connection-top-left {
+  width: 160px;
+  height: 2px;
+  right: 50%;
+  top: 50%;
+  transform-origin: right center;
+  transform: rotate(var(--angleNeg));
+  background: linear-gradient(270deg, #00D4FF 0%, transparent 100%);
+}
+
+/* Bubbles */
+.tech-bubble {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border:#CCC 1px solid;
+  border-radius: 50%;
+  background-color:#0a1628;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.tech-bubble-content {
+  text-align: center;
+  color: #ffffff;
+}
+
+.tech-bubble-title {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.tech-bubble-subtitle {
+  font-size: 13px;
+  font-weight: 400;
+  opacity: 0.9;
+}
+
+/* Bubble positions - Regular Hexagon vertices */
+.tech-bubble-top {
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.tech-bubble-top-right {
+  top: var(--diagramDist);
+  right: 50px;
+}
+
+.tech-bubble-bottom-right {
+  bottom: var(--diagramDist);
+  right: 50px;
+}
+
+.tech-bubble-bottom {
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.tech-bubble-bottom-left {
+  bottom: var(--diagramDist);
+  left: 50px;
+}
+
+.tech-bubble-top-left {
+  top: var(--diagramDist);
+  left: 50px;
+}
+
+
+/* Hover effects */
+.tech-bubble.hovered {
+  box-shadow: 0 8px 32px rgba(0, 102, 255, 0.4);
+}
+
+.tech-bubble-top.hovered,
+.tech-bubble-bottom.hovered {
+  transform: translateX(-50%) scale(1.15);
+}
+
+.tech-bubble-top-right.hovered,
+.tech-bubble-bottom-right.hovered,
+.tech-bubble-bottom-left.hovered,
+.tech-bubble-top-left.hovered {
+  transform: scale(1.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .tech-diagram {
+    height: 400px;
+  }
+
+  .tech-center {
+    width: 120px;
+    height: 120px;
+  }
+
+  .tech-center-content h3 {
+    font-size: 20px;
+  }
+
+  .tech-center-content span {
+    font-size: 16px;
+  }
+
+  .tech-bubble {
+    width: 100px;
+    height: 100px;
+  }
+
+  .tech-bubble-title {
+    font-size: 13px;
+  }
+
+  .tech-bubble-subtitle {
+    font-size: 11px;
+  }
+
+  .tech-connection-top,
+  .tech-connection-bottom {
+    height: 140px;
+  }
+
+  .tech-connection-top-right,
+  .tech-connection-bottom-right,
+  .tech-connection-bottom-left,
+  .tech-connection-top-left {
+    width: 140px;
+  }
+
+  .tech-bubble-top-right {
+    top: 60px;
+    right: 30px;
+  }
+
+  .tech-bubble-bottom-right {
+    bottom: 60px;
+    right: 30px;
+  }
+
+  .tech-bubble-bottom-left {
+    bottom: 60px;
+    left: 30px;
+  }
+
+  .tech-bubble-top-left {
+    top: 60px;
+    left: 30px;
+  }
+}

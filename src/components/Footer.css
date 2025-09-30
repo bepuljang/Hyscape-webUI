@@ -1,0 +1,22 @@
+.footer {
+  background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1e 100%);
+  color: #e0e0e0;
+  position: relative;
+  width:100%;
+}
+
+.footer > div {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  margin: auto;
+  width:100%;
+  padding:4.0em 2.0em;
+  gap:2.0em;
+}
+
+@media screen and (max-width:1024px) {
+  .footer > div {
+    flex-direction: column;
+  }
+}

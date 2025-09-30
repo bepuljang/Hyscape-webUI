@@ -1,0 +1,111 @@
+.history-container {
+    padding: 80px 20px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.history-title {
+    font-size: 2.2rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 60px;
+    color: #333;
+}
+
+.history-timeline {
+    position: relative;
+    padding: 20px 0;
+}
+
+.history-year-section {
+    display: flex;
+    margin-bottom: 60px;
+    position: relative;
+}
+
+.history-year {
+    flex: 0 0 120px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #2c3e50;
+    position: sticky;
+    top: 100px;
+    height: fit-content;
+}
+
+.history-events {
+    flex: 1;
+    padding-left: 40px;
+    border-left: 1px solid #333;
+    position: relative;
+}
+
+.history-event {
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.history-event-period {
+    font-size: 1.4rem;
+    color: #7f8c8d;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.history-date {
+    padding: 2px 8px;
+}
+
+.history-event-content {
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+}
+
+.history-event-title {
+    font-size: 1.4em;
+    line-height: 1.6;
+    color: #2c3e50;
+    padding: 15px 20px;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .history-container {
+        padding: 60px 20px;
+    }
+
+    .history-title {
+        font-size: 2rem;
+        margin-bottom: 40px;
+    }
+
+    .history-year-section {
+        flex-direction: column;
+        margin-bottom: 40px;
+    }
+
+    .history-year {
+        position: static;
+        margin-bottom: 20px;
+        font-size: 1.5rem;
+    }
+
+    .history-events {
+        padding-left: 20px;
+        border-left-width: 2px;
+    }
+
+    .history-event-marker {
+        left: -24px;
+        width: 10px;
+        height: 10px;
+    }
+
+    .history-event-title {
+        font-size: 1rem;
+        padding: 12px 16px;
+    }
+}

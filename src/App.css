@@ -1,0 +1,17 @@
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 40px;
+  max-width: 1400px;
+}
+
+li {list-style:none;}
+
+.flex {
+  display: flex;
+}
