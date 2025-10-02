@@ -1,6 +1,23 @@
 import React from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/autoplay';
 import './Partners.css';
-import partnersImage from '../KeyPartners.jpeg';
+import Investor from './Investor';
+
+// Import all partner images
+const materialSuppliers = Array.from({length: 14}, (_, i) =>
+    new URL(`./partners/material_suppliers/material_suppliers_${String(i + 1).padStart(2, '0')}.png`, import.meta.url).href
+);
+
+const componentSuppliers = Array.from({length: 4}, (_, i) =>
+    new URL(`./partners/component_suppliers/component_suppliers_${String(i + 1).padStart(2, '0')}.png`, import.meta.url).href
+);
+
+const equipmentSuppliers = Array.from({length: 3}, (_, i) =>
+    new URL(`./partners/equipment_suppliers/equipment_suppliers_${String(i + 1).padStart(2, '0')}.png`, import.meta.url).href
+);
 
 const partnersData = {
     topCategories: [
@@ -24,62 +41,124 @@ const partnersData = {
     supplierCategories: [
         {
             type: "Material Suppliers",
-            items: ["Catalysts", "Electrode membranes/ionomers", "Films"]
+            items: ["Catalysts", "Electrode membranes/ionomers", "Films"],
+            images: materialSuppliers
         },
         {
             type: "Component Suppliers",
-            items: ["MEA", "PTL/GDL", "Bipolar plates"]
+            items: ["MEA", "PTL/GDL", "Bipolar plates"],
+            images: componentSuppliers
         },
         {
             type: "Equipment/Processing",
-            items: ["Manufacturing equipment", "Coating technology", "Evaluation equipment"]
+            items: ["Manufacturing equipment", "Coating technology", "Evaluation equipment"],
+            images: equipmentSuppliers
         }
     ]
 };
 
 const Partners = () => {
     return (
-        <section id="partners-section">
+        <section id="investor" className='partners-section'>
             <div className="container">
                 <h2 className="section-title">Key Partners</h2>
 
-                <div className="partners-ecosystem">
-                    <div className="partners-diagram">
-                        <div className="hyscape-center">
-                            <div className="center-circle">
-                                <h3>Hyscape</h3>
+                {/* Partner Categories Section - 3 Column Layout with Swiper */}
+                <div className="partners-three-column-section">
+                    <div className="partners-columns-container">
+                        {/* Column 1: Material Suppliers */}
+                        <div className="partner-column">
+                            <div className="column-header">
+                                <h4>Material Suppliers</h4>
+                                <p className="column-subtitle">Catalysts • Electrode membranes • Ionomers • Films</p>
                             </div>
+                            <Swiper
+                                modules={[Autoplay]}
+                                spaceBetween={20}
+                                slidesPerView={'auto'}
+                                loop={true}
+                                loopedSlides={14}
+                                speed={5000}
+                                autoplay={{
+                                    delay: 0,
+                                    disableOnInteraction: false,
+                                }}
+                                className="partner-swiper"
+                            >
+                                {/* Double the slides for better loop */}
+                                {[...materialSuppliers, ...materialSuppliers].map((image, idx) => (
+                                    <SwiperSlide key={idx} className="partner-slide">
+                                        <div className="partner-logo-swiper">
+                                            <img src={image} alt={`Material Supplier ${(idx % 14) + 1}`} />
+                                        </div>
+                                    </SwiperSlide>
+                                ))}
+                            </Swiper>
                         </div>
 
-                        <div className="partner-categories">
-                            {partnersData.topCategories.map((category, index) => (
-                                <div key={index} className={`partner-box category-${index + 1}`}>
-                                    <h4>{category.title}</h4>
-                                </div>
-                            ))}
+                        {/* Column 2: Component Suppliers */}
+                        <div className="partner-column">
+                            <div className="column-header">
+                                <h4>Component Suppliers</h4>
+                                <p className="column-subtitle">MEA • PTL/GDL • Bipolar plates</p>
+                            </div>
+                            <Swiper
+                                modules={[Autoplay]}
+                                spaceBetween={20}
+                                slidesPerView={'auto'}
+                                loop={true}
+                                loopedSlides={8}
+                                speed={4000}
+                                autoplay={{
+                                    delay: 0,
+                                    disableOnInteraction: false,
+                                }}
+                                className="partner-swiper"
+                            >
+                                {/* Triple the slides for better loop with short list */}
+                                {[...componentSuppliers, ...componentSuppliers, ...componentSuppliers].map((image, idx) => (
+                                    <SwiperSlide key={idx} className="partner-slide">
+                                        <div className="partner-logo-swiper">
+                                            <img src={image} alt={`Component Supplier ${(idx % 4) + 1}`} />
+                                        </div>
+                                    </SwiperSlide>
+                                ))}
+                            </Swiper>
                         </div>
-                    </div>
 
-                    <div className="suppliers-section">
-                        <div className="suppliers-grid">
-                            {partnersData.supplierCategories.map((category, index) => (
-                                <div key={index} className="supplier-category">
-                                    <h4>{category.type}</h4>
-                                    <ul>
-                                        {category.items.map((item, idx) => (
-                                            <li key={idx}>{item}</li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            ))}
+                        {/* Column 3: Equipment Suppliers */}
+                        <div className="partner-column">
+                            <div className="column-header">
+                                <h4>Equipment Suppliers</h4>
+                                <p className="column-subtitle">Manufacturing • Coating • Evaluation</p>
+                            </div>
+                            <Swiper
+                                modules={[Autoplay]}
+                                spaceBetween={20}
+                                slidesPerView={'auto'}
+                                loop={true}
+                                loopedSlides={9}
+                                speed={3500}
+                                autoplay={{
+                                    delay: 0,
+                                    disableOnInteraction: false,
+                                }}
+                                className="partner-swiper"
+                            >
+                                {/* Quadruple the slides for better loop with very short list */}
+                                {[...equipmentSuppliers, ...equipmentSuppliers, ...equipmentSuppliers, ...equipmentSuppliers].map((image, idx) => (
+                                    <SwiperSlide key={idx} className="partner-slide">
+                                        <div className="partner-logo-swiper">
+                                            <img src={image} alt={`Equipment Supplier ${(idx % 3) + 1}`} />
+                                        </div>
+                                    </SwiperSlide>
+                                ))}
+                            </Swiper>
                         </div>
-                    </div>
-
-                    <div className="partners-image-container">
-                        <img src={partnersImage} alt="Hyscape Key Partners" className="partners-image"/>
                     </div>
                 </div>
             </div>
+            <Investor/>
         </section>
     );
 };

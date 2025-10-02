@@ -1,7 +1,7 @@
 import './Investor.css';
-import blissvine from '../assets/investors/blissvine.png';
-import schmidt from '../assets/investors/schmidt.png';
-import koreasocialinvestment from '../assets/investors/koreasocialinvestment.png';
+import blissvine from './investors/blissvine.png';
+import schmidt from './investors/schmidt.png';
+import koreasocialinvestment from './investors/koreasocialinvestment.png';
 
 const Investor = () => {
   const investors = [

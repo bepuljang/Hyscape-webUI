@@ -59,7 +59,7 @@ const history_list = [
 
 const History = () => {
     return (
-        <div className="history-container">
+        <div id='history' className="history-container">
             <div className='container'>
                 <h2 className="section-title">Our Journey</h2>
                 <div className="history-timeline">

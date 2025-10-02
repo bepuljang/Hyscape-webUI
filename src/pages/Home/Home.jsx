@@ -5,7 +5,6 @@ import Staff from './components/Staff';
 import Technology from './components/Technology/Technology';
 import Mission from './components/Mission';
 import Contact from './components/Contact';
-import Investor from './components/Investor';
 import History from './components/History';
 import Product from './components/Product/Product';
 import Business from './components/Business/Business';
@@ -20,9 +19,7 @@ const Home = () => {
       <Product/>
       <Technology/>
       <History/>
-      <Business/>
       <Partners/>
-      <Investor/>
       <Contact/>
     </div>
   );

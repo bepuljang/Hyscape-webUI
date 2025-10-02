@@ -29,7 +29,7 @@ const Staff = () => {
     const [selectedMember, setSelectedMember] = useState(0);
 
     return (
-        <section className="team">
+        <section id="staff" className="team">
         <div className="container">
           <div className="flex" style={{gap:"2.0em", marginBottom:"4.0em"}}>
             <h2 className="section-title">Team</h2>

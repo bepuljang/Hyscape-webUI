@@ -3,7 +3,7 @@ import TechDiagram from "./TechDiagram"
 const Technology = () => {
 
     return (
-        <section className="technology">
+        <section id="technology" className="technology">
         <div className="technology-container">
           <h2 className="section-title">Technology</h2>
 

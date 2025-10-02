@@ -1,6 +1,6 @@
-#partners-section {
+.partners-section {
     padding: 3.0em 0;
-    background-color: #f8f9fa;
+    background-color: #FFF;
 }
 
 .partners-ecosystem {
@@ -101,7 +101,6 @@
     position: absolute;
     width: 2px;
     height: 50px;
-    background: #e0e0e0;
     z-index: -1;
 }
 
@@ -129,52 +128,219 @@
     transform: translateY(-50%) rotate(90deg);
 }
 
-.suppliers-section {
+/* Partners Three Column Section */
+.partners-three-column-section {
     margin-top: 4em;
-    padding-top: 3em;
-    border-top: 2px solid #e0e0e0;
+    padding: 3em 1em;
+    width: 100%;
+    max-width: 100%;
 }
 
-.suppliers-grid {
+.partners-columns-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2em;
-    margin-top: 2em;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5em;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
-.supplier-category {
+.partner-column {
+    position: relative;
     background: white;
-    padding: 2em;
-    border-radius: 8px;
-    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 1.5em 1em;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    min-width: 0;
+    overflow: hidden;
 }
 
-.supplier-category h4 {
+.column-header {
+    text-align: center;
+    margin-bottom: 1.5em;
+    padding-bottom: 1em;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.column-header h4 {
     font-size: 1.1rem;
     font-weight: 600;
     color: #2c5aa0;
-    margin-bottom: 1em;
+    margin-bottom: 0.3em;
 }
 
-.supplier-category ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.supplier-category li {
-    padding: 0.5em 0;
+.column-subtitle {
+    font-size: 0.75rem;
     color: #666;
-    position: relative;
-    padding-left: 1.5em;
+    margin: 0;
+    line-height: 1.3;
 }
 
-.supplier-category li::before {
-    content: "•";
+/* Horizontal Carousel */
+.horizontal-carousel {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding: 0.5em 0;
+}
+
+.horizontal-track-wrapper {
+    width: 100%;
+    overflow: hidden;
+}
+
+.horizontal-carousel::before,
+.horizontal-carousel::after {
+    content: '';
     position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 30px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.horizontal-carousel::before {
     left: 0;
-    color: #4a90e2;
-    font-weight: bold;
+    background: linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+.horizontal-carousel::after {
+    right: 0;
+    background: linear-gradient(to left, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+.horizontal-track {
+    display: flex;
+    flex-direction: row;
+    animation: horizontalScroll 15s linear infinite;
+    gap: 1em;
+    will-change: transform;  /* 부드러운 애니메이션을 위한 최적화 */
+}
+
+.partner-logo-horizontal {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8em;
+    min-width: 110px;
+    height: 70px;
+    transition: all 0.3s ease;
+}
+
+.partner-logo-horizontal:hover {
+    background: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-3px);
+}
+
+.partner-logo-horizontal img {
+    max-width: 90px;
+    max-height: 45px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    filter: grayscale(100%);
+    opacity: 0.6;
+    transition: all 0.3s ease;
+}
+
+.partner-logo-horizontal:hover img {
+    filter: grayscale(0%);
+    opacity: 1;
+}
+
+/* Horizontal Scroll Animation - 더 정확한 루프 */
+@keyframes horizontalScroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-33.333%);  /* 3세트 중 1세트만 이동 */
+    }
+}
+
+/* Pause on hover */
+.horizontal-carousel:hover .horizontal-track {
+    animation-play-state: paused;
+}
+
+/* Swiper Styles for Partners */
+.partner-swiper {
+    width: 100%;
+    padding: 1em 0;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Gradient overlays for fade effect */
+.partner-swiper::before,
+.partner-swiper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 30px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.partner-swiper::before {
+    left: 0;
+    background: linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+.partner-swiper::after {
+    right: 0;
+    background: linear-gradient(to left, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+.partner-slide {
+    width: auto !important;
+}
+
+.partner-logo-swiper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1em;
+    min-width: 120px;
+    height: 80px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.partner-logo-swiper:hover {
+    background: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-3px);
+}
+
+.partner-logo-swiper img {
+    max-width: 100px;
+    max-height: 50px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    filter: grayscale(100%);
+    opacity: 0.6;
+    transition: all 0.3s ease;
+}
+
+.partner-logo-swiper:hover img {
+    filter: grayscale(0%);
+    opacity: 1;
+}
+
+/* Swiper container adjustments */
+.swiper {
+    overflow: hidden;
+}
+
+.swiper-wrapper {
+    transition-timing-function: linear !important;
 }
 
 .partners-image-container {
@@ -225,7 +391,86 @@
         display: none;
     }
 
-    .suppliers-grid {
+    /* Mobile: Stack columns vertically */
+    .partners-columns-container {
         grid-template-columns: 1fr;
+        gap: 3em;
+    }
+
+    .partner-column {
+        padding: 1.5em 1em;
+    }
+
+    /* Swiper mobile adjustments */
+    .partner-logo-swiper {
+        min-width: 100px;
+        height: 70px;
+        padding: 0.8em;
+    }
+
+    .partner-logo-swiper img {
+        max-width: 80px;
+        max-height: 40px;
+    }
+
+    .column-header h4 {
+        font-size: 1.1rem;
+    }
+
+    .column-subtitle {
+        font-size: 0.8rem;
+    }
+
+    .horizontal-track {
+        gap: 1em;
+        animation-duration: 15s;  /* 모바일에서도 속도 조정 */
+    }
+
+    .horizontal-carousel::before,
+    .horizontal-carousel::after {
+        width: 20px;
+    }
+}
+
+@media (max-width: 1200px) and (min-width: 769px) {
+    /* Tablet: Smaller padding and sizes */
+    .partners-columns-container {
+        gap: 1em;
+    }
+
+    .partner-column {
+        padding: 1em 0.8em;
+    }
+
+    .column-header h4 {
+        font-size: 1rem;
+    }
+
+    .column-subtitle {
+        font-size: 0.7rem;
+    }
+
+    .partner-logo-horizontal {
+        min-width: 100px;
+        height: 65px;
+        padding: 0.6em;
+    }
+
+    .partner-logo-horizontal img {
+        max-width: 80px;
+        max-height: 40px;
+    }
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+    /* Smaller tablets: 2 columns layout */
+    .partners-columns-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .partner-column:last-child {
+        grid-column: span 2;
+        max-width: 50%;
+        margin: 0 auto;
     }
 }
